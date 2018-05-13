@@ -1,0 +1,51 @@
+<html>
+  <head>
+
+  </head>
+
+  <body>
+    <script>
+      // 이벤트 연결 - default
+      window.addEventListener('load', function() {
+        /*
+          load: 이벤트 이름(event name) 또는 이벤트 타입(event type)
+          functon() {} : 이벤트 리스너(event listener) 또는 이벤트 핸들러(event handler)
+        */
+      });
+
+      // 이벤트 연결 - Node.js
+      process.on('exit', function (code) {
+        // on(eventName, eventHandler): 이벤트를 연결하는 메서드
+      });
+
+      // uncaughtException 이벤트 연결
+      process.on('uncaughtException', function (error) {
+        // uncaughtException: 예외가 발생할 때 실행되는 이벤트
+        // 실제 프로젝트에서는 사용하지말고, try-catch로 직접 예외처리 권장
+      });
+
+      // 이벤트 연결 예제
+      process.on('exit', function (code) {
+        console.log('Good bye..!');
+      });
+
+      process.on('uncaughtException', function (error) {
+        console.log('Exception occur!');
+      });
+
+      // 2초 간격으로 3회 예외 발생
+      var count = 0;
+      var test = function() {
+        // 탈출 코드
+        count = count + 1;
+        if (count > 3) { return; }
+
+        // 예외 강제 발생
+        setTimeout(test, 2000);
+        error.error.error();
+      };
+      setTimeout(test, 2000);
+      
+    </script>
+  </body>
+</html>
