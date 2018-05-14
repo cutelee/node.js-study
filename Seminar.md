@@ -15,6 +15,7 @@ Node.js Network Application과 기존 Network Application의 각각의 특징, �
   작업 요청이 들어올 때마다 스레드를 여러 개 만들어서 일을 처리하는 방식으로 일이 많아질수록 스레드를 더 많이 만들어야 하기 때문에 메모리 사용량이 계속 증가한다는 단점이 있다. 또한, 서버의 자원이 제한되어 있기 때문에 thread를 무한정 생산할 수 없다.
 
   * **동기 방식**
+
     하나의 요청이 처리되는 동안 다른 요청이 처리되지 못하며, 요청이 완료되어야만 다음 처리가 가능한 방식
 
 ## Node.js Network application
@@ -26,6 +27,7 @@ Node.js Network Application과 기존 Network Application의 각각의 특징, �
   > EventLoop는 요청을 처리하기 위해 내부적으로 약간의 Thread와 Process를 사용한다. Non-blocking I/O 처리나 내부 처리를 위한 목적으로만 사용하며, 요청 처리 자체를 Thread로 하지는 않는다. 따라서 Node 서버는 Multi-Thread 방식의 서버에 비해 Thread 수와 오버헤드가 적다.
 
   * **비동기 방식**
+  
     하나의 요청 처리가 완료되기 전에 제어권을 다음 요청으로 넘기기 때문에, I/O 처리에서 Blocking 되지 않고 다음 요청을 처리
 
 ***
