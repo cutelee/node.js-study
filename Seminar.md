@@ -53,7 +53,9 @@
 
 ## 전역 객체
   1. console object
+
     *01_Study > global > objet.console.js*
+
     **콘솔 화면** 과 관련된 기능을 다루는 객체
 
     * console object method
@@ -67,7 +69,9 @@
       %j: JSON
 
   2. process object
+
   *01_Study > global > object.process.js*
+
     **프로그램** 과 관련된 기능을 다루는 객체
     프로그램과 관련된 정보를 나타내며 웹 브라우저에서 작동하는 자바스크립트에는 존재하지 않으며, Node.js만이 가진 객체
 
@@ -84,3 +88,27 @@
 
 
 ***
+
+# socket.io Module
+
+## socket.io module 기본
+
+### Server
+
+### Client
+
+### Event
+
+## 소켓 통신 종류
+
+public: 자신을 포함한 모든 클라이언트에 데이터를 전달
+
+broadcast: 자신을 제외한 모든 클라이언트에 데이터를 전달
+
+private: 특정 클라이언트에 데이터를 전달(채팅에서 귓속말을 하는 경우)
+
+## public 통신
+
+*01_Study > socket.io > socket.io.server.public.js*
+
+public 통신을 구현하는 방법은 io.sockets 객체의 emit() 메서드를 사용하면 된다.
