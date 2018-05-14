@@ -1,3 +1,4 @@
+
 # Node.js
 
 웹브라우저가 아닌 곳에서 자바스크립트를 사용하기 위한 실행환경(JavaScript Runtime)으로 서버 환경에서 자바스크립트를 사용하기 위한 것이다. 대규모 네트워크 애플리케이션 개발을 가능하게 한다.
@@ -6,6 +7,8 @@
 
 # Node.js Network Application
 Node.js Network Application과 기존 Network Application의 각각의 특징, 장단점과 두 방식의 차이점에 대해서 알아본다.
+
+참고 링크: http://www.nextree.co.kr/p7292/
 
 ## 기존 Network Application
   thread를 기반으로 하는 **동기 방식** 으로 네트워크 입출력을 처리한다.
@@ -27,7 +30,7 @@ Node.js Network Application과 기존 Network Application의 각각의 특징, �
   > EventLoop는 요청을 처리하기 위해 내부적으로 약간의 Thread와 Process를 사용한다. Non-blocking I/O 처리나 내부 처리를 위한 목적으로만 사용하며, 요청 처리 자체를 Thread로 하지는 않는다. 따라서 Node 서버는 Multi-Thread 방식의 서버에 비해 Thread 수와 오버헤드가 적다.
 
   * **비동기 방식**
-  
+
     하나의 요청 처리가 완료되기 전에 제어권을 다음 요청으로 넘기기 때문에, I/O 처리에서 Blocking 되지 않고 다음 요청을 처리
 
 ***
@@ -77,6 +80,8 @@ Node.js가 제공하는 전역 객체와 핵심적인 모듈에 대해 살펴본
 
 이 외에도 String, Number, Math 등 기존 자바스크립트가 가지고 있는 전역 객체 또한 가지고 있다.
 
+- - -
+
 ### console object
 *01_Study > global > objet.console.js*
 
@@ -91,6 +96,7 @@ Node.js가 제공하는 전역 객체와 핵심적인 모듈에 대해 살펴본
       **%d** : 숫자
       **%s** : 문자열
       **%j** : JSON
+- - -
 
 ### process object
 *01_Study > global > object.process.js*
@@ -104,6 +110,8 @@ Node.js가 제공하는 전역 객체와 핵심적인 모듈에 대해 살펴본
       **versions** : Node.js와 종속된 프로그램 버전
       **arch** : 프로세서 아키텍처
       **platform** : 플랫폼
+
+- - -
 
 ### exports object, module
    **모듈** 과 관련된 기능을 다루는 객체
@@ -146,21 +154,35 @@ Node.js는 기본적으로 여러 가지 모듈을 제공하는데, 그 중에�
 * **crypto** : 해시 생성, 암호화를 수행하는 모듈
 * **File System** : 파일을 다룰 때 사용하는 모듈
 
-## os
-
-## url
-
-## Query String
-
-## util
-
-## crypto
-
-## File System
-
+*01_Study > module > module.[module_name].js*
+\- 각 모듈과 관련된 예제가 적혀있음
 
 ***
+# Event
+Node.js의 주요 특징 중 하나는 이벤트 기반의 비동기 프로그래밍이 가능하다는 것이다. 자바 스크립트는 다른 프로그래밍 언어에 비해 함수 생성, 이벤트 연결이 용이하기 때문에 이벤트 기반 프로그래밍을 하기에 좋다.
 
+## 이벤트 연결
+
+기존의 자바스크립트에서 했던 이벤트 연결(아래 코드)를 살펴보면, window 객체에 load 이벤트를 연결하여 함수 안의 내용을 수행하도록 하였다. load를 이벤트 이름(Event Name) 혹은 이벤트 타입(Event Type)이라고 한다. 매개변수로 입력된 함수는 이벤트 리스너(Event Listener) 또는 이벤트 핸들러(Event Handler)라고 한다.
+
+	<script>
+		// window 객체에 load 이벤트를 연결
+		window.addEventListener('load', function () {
+
+		});
+	</script>
+
+
+Node.js에서도 이와 비슷한 방법으로 이벤트를 연결한다. Node.js에서는 자바스크립트의 addEventListener() 함수보다 더 간단한 함수를 사용한다. on(eventName, eventHandler) 함수를 사용하면 된다.
+
+	// process 객체에 exit 이벤트 연결
+	process.on('exit', function (code) {
+
+	});
+
+그 외에 이벤트를 연결하는 추가적인 내용과 이벤트 연결 개수 제한, 이벤트 제거, 이벤트 강제 발생, 이벤트 생성에 관련된 자바스크립트 코드는 *01_Study > event* 폴더 내에 있다.
+
+***
 # socket.io Module
 
 ## socket.io module 기본
@@ -173,17 +195,17 @@ Node.js는 기본적으로 여러 가지 모듈을 제공하는데, 그 중에�
 
 ## 소켓 통신 종류
 
-**public** : 자신을 포함한 모든 클라이언트에 데이터를 전달
-**broadcast** : 자신을 제외한 모든 클라이언트에 데이터를 전달
-**private** : 특정 클라이언트에 데이터를 전달(채팅에서 귓속말을 하는 경우)
+* **public** : 자신을 포함한 모든 클라이언트에 데이터를 전달
+* **broadcast** : 자신을 제외한 모든 클라이언트에 데이터를 전달
+* **private** : 특정 클라이언트에 데이터를 전달(채팅에서 귓속말을 하는 경우)
 
 ### public 통신
 
 *01_Study > socket.io > socket.io.server.public.js*
 
 public 통신을 구현하는 방법은 io.sockets 객체의 emit() 메서드를 사용하면 된다.
-
+- - -
 ### broadcast 통신
 
-
+- - -
 ### private 통신
