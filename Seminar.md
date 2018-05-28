@@ -83,7 +83,7 @@ Node.js가 제공하는 전역 객체와 핵심적인 모듈에 대해 살펴본
 - - -
 
 ### console object
-*01_Study > global > objet.console.js*
+*01_Study > global > object.console.js*
 
 **콘솔 화면** 과 관련된 기능을 다루는 객체
 
